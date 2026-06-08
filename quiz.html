@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测验平台 - 答题页面</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Python 知识测验</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText" class="progress-text">第 1 题 / 共 0 题</p>
+        </div>
+
+        <div class="main-content">
+            <!-- 题目卡片 -->
+            <div class="card question-card" id="questionCard">
+                <div class="question-header">
+                    <span class="difficulty" id="difficulty">简单</span>
+                    <span class="question-tag" id="category">基础</span>
+                </div>
+                <h2 id="questionTitle">加载题目中...</h2>
+                <p id="questionDescription" class="question-description"></p>
+
+                <!-- 选项 -->
+                <div class="options" id="optionsContainer"></div>
+
+                <!-- 操作按钮 -->
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← 上一题</button>
+                    <button class="btn btn-primary" id="submitBtn" onclick="submitAnswer()">提交答案</button>
+                    <button class="btn btn-secondary" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
+                </div>
+            </div>
+
+            <!-- 结果卡片（初始隐藏） -->
+            <div class="card result-card" id="resultCard" style="display: none;">
+                <div class="result-header" id="resultHeader">
+                    <h2 id="resultTitle">✅ 回答正确！</h2>
+                </div>
+                <div class="result-content">
+                    <p id="resultMessage"></p>
+                    <div class="explanation" id="explanation">
+                        <h4>📚 答案解析</h4>
+                        <p id="explanationText"></p>
+                    </div>
+                    <div class="correct-answer" id="correctAnswerDiv">
+                        <h4>正确答案</h4>
+                        <p id="correctAnswer"></p>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" id="continueBtn" onclick="continueToNext()">继续下一题 →</button>
+                </div>
+            </div>
+
+            <!-- 完成卡片 -->
+            <div class="card completion-card" id="completionCard" style="display: none;">
+                <div class="completion-header">
+                    <h2>🎉 测验完成！</h2>
+                </div>
+                <div class="completion-content">
+                    <div class="final-score">
+                        <span class="score-number" id="finalScore">0</span>
+                        <span class="score-label">分</span>
+                    </div>
+                    <div class="score-details">
+                        <p>正确答题: <span id="correctCount">0</span> / <span id="totalCount">0</span></p>
+                        <p>正确率: <span id="correctRate">0%</span></p>
+                    </div>
+                    <div class="completion-message" id="completionMessage"></div>
+                    <div class="button-group">
+                        <a href="index.html" class="btn btn-primary">返回主页</a>
+                        <button class="btn btn-secondary" onclick="restartQuiz()">重新开始</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Python 知识测验平台 | 加油💪</p>
+        </div>
+    </div>
+
+    <script src="data/questions.js"></script>
+    <script src="assets/js/quiz.js"></script>
+</body>
+</html>
