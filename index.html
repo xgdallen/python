@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测验平台 - 欢迎</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 Python 知识测验平台</h1>
+            <p>提升你的 Python 编程技能</p>
+        </div>
+
+        <div class="main-content">
+            <div class="card welcome-card">
+                <h2>欢迎来到测验平台</h2>
+                <p>这是一个帮助你巩固 Python 基础知识的交互式学习平台。</p>
+                <ul class="features">
+                    <li>✅ 多道 Python 编程题目</li>
+                    <li>✅ 实时答题反馈</li>
+                    <li>✅ 详细的答案解析</li>
+                    <li>✅ 成绩统计</li>
+                </ul>
+            </div>
+
+            <div class="card stats-card">
+                <h3>平台统计</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalQuestions">0</span>
+                        <span class="stat-label">总题数</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="avgScore">--</span>
+                        <span class="stat-label">平均分数</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="completedCount">0</span>
+                        <span class="stat-label">已完成</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-area">
+                <a href="quiz.html" class="btn btn-primary btn-large">
+                    🚀 开始答题
+                </a>
+            </div>
+
+            <div class="card info-card">
+                <h3>如何使用</h3>
+                <ol>
+                    <li>点击"开始答题"按钮进入答题页面</li>
+                    <li>仔细阅读每道题目</li>
+                    <li>选择你认为正确的答案</li>
+                    <li>提交答案后会立即显示是否正确</li>
+                    <li>查看详细的答案解析</li>
+                    <li>继续下一题或返回主页</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Python 知识测验平台 | 帮助你成为更好的程序员</p>
+        </div>
+    </div>
+
+    <script src="data/questions.js"></script>
+    <script>
+        // 初始化首页统计数据
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalQuestions = document.getElementById('totalQuestions');
+            const avgScore = document.getElementById('avgScore');
+            const completedCount = document.getElementById('completedCount');
+
+            // 从 localStorage 读取统计数据
+            const stats = JSON.parse(localStorage.getItem('quizStats') || '{"completed": 0, "totalScore": 0}');
+            
+            totalQuestions.textContent = QUESTIONS.length;
+            completedCount.textContent = stats.completed;
+            
+            if (stats.completed > 0) {
+                avgScore.textContent = (stats.totalScore / stats.completed).toFixed(1);
+            }
+        });
+    </script>
+</body>
+</html>
